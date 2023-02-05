@@ -1,0 +1,442 @@
+@charset"UTF-8";
+
+//ブレイクポイント
+$breakpoints: ('sm': 'screen and (max-width: 600px)') !default;
+
+@mixin mq($breakpoint: sm) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+//色
+$text-primary-color: #ffffff;
+$text-secondary-color: #0d253e;
+$primary-color: #ffcc01;
+$secondary-color: #1e88f5;
+$tertiary-color: #f4f8fc;
+
+//全体
+* {
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+  font-family: 'Roboto', sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
+
+img{
+  max-width: 100%;
+}
+
+@include mq(){
+  .pc-only{
+    display: none;
+  }
+}
+
+//モジュール
+.container{
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+.btn{
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+  color: $text-primary-color;
+  font-size: 2rem;
+  padding: 20px 40px;
+  border: none;
+  background-color: $primary-color;
+  box-shadow: 0 0 20px 0 rgba(254, 203, 1, 0.4);
+  &--secondary-sharp{
+    background: $secondary-color;
+    box-shadow: 0 0 20px 0 rgba(30, 136, 245, 0.4);
+  }
+  @include mq(){
+    width: 100%;
+  }
+}
+
+.round-box{
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: $tertiary-color;
+  position: relative;
+  margin: 30px 0;
+  &--secondary-sharp{
+    background-color: $secondary-color;
+  }
+  &__img{
+    display: block;
+    position: absolute;
+    top: 52px;
+    left: 53px;
+  }
+}
+
+.small-round-box{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $primary-color;
+  box-shadow: 0 0 20px 0 rgba(254, 203, 1, 0.4);
+  position: relative;
+  position: absolute;
+  top: 5px;
+  left: 115px;
+  &__img{
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 11px;
+  }
+}
+
+//ヘッダー
+.top-wrapper{
+  background-image: url(../image/deathto-stock-medium-6@3x.jpg);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 630px;
+  color: $text-primary-color;
+  padding: 0 4%;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0 90px 0;
+  &__list{
+    display: flex;
+    align-items: center;
+  }
+  &__item {
+    font-size: 1.8rem;
+    margin-left: 58px;
+    @include mq(){
+    margin-left: 0px;
+    }
+  }
+  &__link{
+    color: $text-primary-color;
+  }
+  &__btn{
+    padding: 17px 28px;
+  }
+}
+
+//タイトル
+.page-title{
+  text-align: center;
+  &__txt{
+    line-height: 1.17;
+    margin-bottom: 57px;
+    font-size: 4.6rem;
+    font-weight: normal;
+  }
+}
+
+//serviceセクション
+.service{
+  text-align: center;
+  margin: 131px auto 173px;
+  line-height: 1.36;
+  @include mq(){
+    margin: 70px auto 90px;
+  }
+  &__title{
+    font-weight: 300;
+    color: $text-secondary-color;
+    font-size: 3.8rem;
+    margin-bottom: 27px;
+  }
+  &__txt{
+    color: rgba($text-secondary-color,0.4);
+    font-size: 2.2rem;
+    margin-bottom: 73px;
+  }
+}
+
+.service-cont{
+  display: flex;
+  flex-wrap: wrap;
+  @include mq(){
+    flex-direction: column;
+    align-items: center;
+  }
+  &__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: calc(100% / 3);
+    text-align: center;
+    &--bottom{
+      flex-direction: column-reverse;
+      margin-top: 65px;
+      @include mq(){
+        margin-top: 0px;
+      }
+    }
+  }
+  &__msg{
+    width: 250px;
+  }
+  &__title{
+    font-weight: 300;
+    font-size: 2.8rem;
+    color: $text-secondary-color;
+    &--secondary-sharp{
+      color: $secondary-color;
+    }
+  }
+  &__txt{
+    font-size: 2.2rem;
+    color: rgba($text-secondary-color,0.4);
+  }
+}
+
+//annonceセクション
+.annonce{
+  background-image: url(../image/bitmap@3x.png);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 645px;
+  display: flex;
+  @include mq(){
+    height: auto;
+    background-size: auto 645px;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 4%;
+  }
+  &__msg{
+    max-width: 960px;
+    width: 100%;
+    margin-top: 221px;
+  }
+  &__title{
+    max-width: 467px;
+    margin: 0 auto 30px;
+    text-align: left;
+    color: $text-primary-color;
+    font-size: 4.6rem;
+    @include mq(){
+      text-align: center;
+    }
+  }
+  &__lighter{
+    font-weight: lighter;
+  }
+  &__list{
+    margin-top: -42px;
+    @include mq(){
+      margin-top: 200px;
+    }
+  }
+  &__item{
+    list-style: none;
+    max-width: 660px;
+    max-height: 230px;
+    padding: 55px 69px 55px 59px;
+    margin-bottom: 21px;
+    border-radius: 4px;
+    background-color: $text-primary-color;
+    box-shadow: 0 20px 60px 10px rgba(13, 37, 62, 0.1);
+    @include mq(){
+      padding: 23px 16px;
+    }
+  }
+  &__item-title{
+    font-size: 3rem;
+    font-weight: 300;
+    color: $text-secondary-color;
+    margin-bottom: 21px;
+  }
+  &__details{
+    font-size: 2.2rem;
+    color: rgba($text-secondary-color,0.4);
+    line-height: 1.45;
+  }
+}
+
+//budgetセクション
+.budget{
+  margin-bottom: 139px;
+  &__msg{
+    margin: 151px 0 95px;
+    text-align: center;
+    @include mq(){
+      margin: 90px 0 60px;
+      }
+  }
+  &__title{
+    font-size: 3.8rem;
+    font-weight: 300;
+    color: $text-secondary-color;
+    margin-bottom: 19px;
+  }
+  &__txt{
+    line-height: 1.36;
+    color: rgba($text-secondary-color,0.4);
+    font-size: 2.2rem;
+  }
+}
+
+.budget-cont{
+  display: flex;
+  justify-content: space-around;
+  @include mq(){
+    flex-direction: column;
+    align-items: center;
+  }
+  &__box{
+    max-width: 510px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px 10px rgba(13, 37, 62, 0.05);
+    @include mq(){
+      margin-bottom: 50px;
+    }
+  }
+  &__slct{
+    text-align: center;
+    color: $text-primary-color;
+    margin-bottom: 56px;
+    border-radius: 4px 4px 0 0;
+    background-color: $primary-color;
+    box-shadow: 0 0 20px 0 rgba(254, 203, 1, 0.4);
+    &--secondary-sharp{
+      background-color: $secondary-color;
+      box-shadow: 0 0 20px 0 rgba(30, 136, 245, 0.4);
+    }
+  }
+  &__title{
+    font-weight: 300;
+    padding-top: 56px;
+    padding-bottom: 8px;
+    font-size: 2.8rem;
+    letter-spacing: 6px;
+  }
+  &__price{
+    font-size: 2rem;
+    letter-spacing: 1px;
+    padding-bottom: 25px;
+  }
+  &__big{
+    font-weight: bold;
+    font-size: 6rem;
+  }
+  &__txt{
+    font-size: 1.8rem;
+    padding-bottom: 27px;
+  }
+  &__list{
+    max-width: 420px;
+    margin: 0 auto;
+    font-size: 2.2rem;
+    color: $text-secondary-color;
+    list-style: none;
+  }
+  &__item{
+    padding-left: 60px;
+    margin-bottom: 34px;
+    position: relative;
+    &::before{
+      content: "";
+      display: block;
+      width: 64px;
+      height: 55px;
+      background-image: url(../image/shape.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0,-50%);
+    }
+    &--primary{
+      &::before{
+        background-image: url(../image/shape-yellow.svg);
+      }
+    }
+  }
+  &__small{
+    font-size: 1.8rem;
+    display: block;
+  }
+  &__check{
+    margin-right: 10px;
+  }
+  &__btn{
+    margin-top: 60px;
+    margin-bottom: 60px;
+    @include mq(){
+      width: 95%;
+      padding: 20px 12px;
+    }
+  }
+}
+
+.budget-desc{
+  margin: 75px 0 140px 0;
+  line-height: 1.36;
+  @include mq(){
+    margin: 25px 0 130px 0;
+  }
+}
+
+//フッター
+.footer{
+  border-top: solid 2px #eeeeee;
+  &__logo{
+    margin-right: 198px;
+    @include mq(){
+      margin-right: 0;
+      margin-bottom: 42px;
+    }
+  }
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 75px auto;
+    @include mq(){
+      flex-direction: column;
+      align-items: center;
+      margin: 95px auto;
+    }
+  }
+  &__list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  &__item{
+    font-size: 1.8rem;
+    text-align: left;
+    padding-bottom: 19px;
+    width: calc(100% / 4);
+    @include mq(){
+      width: 50%;
+    }
+  }
+  &__link{
+    color: rgba($text-secondary-color,0.4);
+  }
+}
